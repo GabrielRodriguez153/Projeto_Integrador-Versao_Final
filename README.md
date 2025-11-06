@@ -56,7 +56,7 @@ cd Back
 python -m venv venv
 venv\Scripts\activate  # ou source venv/bin/activate no Linux
 pip install -r requirements.txt
-cp .env.example .env      # Configure as variáveis de ambiente
+cp .env.example .env      # Configure as variáveis de ambiente do back
 python run.py
 ```
 
@@ -90,12 +90,12 @@ O frontend estará disponível em `http://localhost:5173`.
 
 Abaixo estão algumas telas principais do sistema:
 
-| Tela                            | Imagem                                                                               |
-| ------------------------------- | ------------------------------------------------------------------------------------ |
+| Tela                            | Imagem                                                                                  |
+| ------------------------------- | --------------------------------------------------------------------------------------- |
 | Tela de Login                   | ![Tela de Login](Frontend/frontend-react/src/assets/TeladeLogin.png)                    |
 | Tela de Cadastro 1° Etapa       | ![Tela de Cadastro1](Frontend/frontend-react/src/assets/TeladeCadastro1.png)            |
 | Tela de Cadastro 2° Etapa       | ![Tela de Cadastro2](Frontend/frontend-react/src/assets/TeladeCadastro2.png)            |
-| Tela de Inicio                  | ![Tela de Inicio](Frontend/frontend-react/src/assets/TelaInicial.png)                    |
+| Tela de Inicio                  | ![Tela de Inicio](Frontend/frontend-react/src/assets/TelaInicial.png)                   |
 | Tela de Dashboard               | ![Tela de Dashboard](Frontend/frontend-react/src/assets/TeladeDashboard.png)            |
 | Tela de Histórico               | ![Tela de Histórico](Frontend/frontend-react/src/assets/TeladeHistorico.png)            |
 | Tela de Perfil                  | ![Tela de Perfil](Frontend/frontend-react/src/assets/TeladeConfiguracoes.png)           |

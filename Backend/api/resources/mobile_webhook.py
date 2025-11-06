@@ -12,7 +12,7 @@ class MobileWebhook(Resource):
         
         data = request.get_json()
         
-        required_fields = ['user_id', 'location', 'resultado', 'confianca']
+        required_fields = ['resultado', 'confianca']
         if not all(field in data for field in required_fields):
             return make_response(jsonify({
                 "error": f"Campos obrigatórios: {', '.join(required_fields)}"

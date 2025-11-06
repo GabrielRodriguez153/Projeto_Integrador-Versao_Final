@@ -13,11 +13,11 @@ class MobileIntegrationService:
             )
             
             case_data = {
-                'localizacao': mobile_data['location'],
+                # 'localizacao': mobile_data['location'],
                 'nivelInfestacao': nivel_infestacao,
                 'status': 'pendente',
                 'dataDeteccao': datetime.utcnow().isoformat(),
-                'proprietario': mobile_data['user_id'],
+                # 'proprietario': mobile_data['user_id'],
                 'observacoes': f"Detecção automática via mobile: {mobile_data['resultado']} (Confiança: {mobile_data['confianca']}%)",
                 'hectares': 1.0,  
                 'qtdMudas': 50,   
@@ -30,7 +30,7 @@ class MobileIntegrationService:
             
             MobileIntegrationService.create_notification(
                 mobile_data['user_id'],
-                f"Nova detecção em {mobile_data['location']}: {mobile_data['resultado']}"
+                f"Nova detecção: {mobile_data['resultado']}"
             )
             
             return str(result.inserted_id)

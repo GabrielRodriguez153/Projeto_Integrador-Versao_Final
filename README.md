@@ -54,7 +54,7 @@ Projeto-Integrador/
 ```sh
 cd Back
 python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate no Windows
+venv\Scripts\activate  # ou source venv/bin/activate no Linux
 pip install -r requirements.txt
 cp .env.example .env      # Configure as variáveis de ambiente
 python run.py

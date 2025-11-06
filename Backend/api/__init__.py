@@ -24,6 +24,7 @@ def create_app():
   from .resources.users import UserDetail, UserList
   from .resources.case import CaseDetail, CaseList
   from .resources.notifications import NotificationDetail, NotificationList
+  from .resources.mobile_webhook import MobileWebhook
 
   api = Api(app)
 
@@ -34,9 +35,10 @@ def create_app():
   api.add_resource(CaseDetail, '/api/case/<id>') 
   api.add_resource(NotificationList, '/api/notifications') 
   api.add_resource(NotificationDetail, '/api/notifications/<id>')
+  api.add_resource(MobileWebhook, '/mobile/webhook')
 
   @app.route('/')
   def index():
-      return jsonify({"message": "API está Rodando"})
+      return jsonify({"message": "API Funcionando"})
 
   return app

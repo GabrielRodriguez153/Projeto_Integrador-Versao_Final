@@ -19,6 +19,7 @@ class UserService:
         
        
         if user and '_id' in user:
+            user['id'] = str(user['_id'])
             user['_id'] = str(user['_id'])
             user.pop('created_at', None)
             user.pop('updated_at', None)
@@ -28,7 +29,6 @@ class UserService:
     @staticmethod
     def get_users():
         users = list(mongo.db.users.find())
-        # Convert ObjectId para string e remove campos de data
         for user in users:
             if '_id' in user:
                 user['_id'] = str(user['_id'])
@@ -74,8 +74,11 @@ class UserService:
     def validate_login(email, password):
         user = mongo.db.users.find_one({'email': email})
         if user and verify_password(password, user['password']):
-            if '_id' in user:
-                user['_id'] = str(user['_id'])
+            user['id'] = str(user['_id'])
+            user['_id'] = str(user['_id'])
+            user.pop('password', None)
+            user.pop('created_at', None)
+            user.pop('updated_at', None)
             return user
         return None
     

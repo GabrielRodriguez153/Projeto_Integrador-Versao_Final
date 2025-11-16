@@ -1,9 +1,9 @@
-import api from "./api";
+import { apiOld } from "./api";
 
 export const authService = {
   async login(email, password) {
     try {
-      const response = await api.post("/login", {
+      const response = await apiOld.post("/api/login", {
         email,
         password,
       });
@@ -27,7 +27,7 @@ export const authService = {
 
   async updateProfile(userId, userData) {
     try {
-      const response = await api.put(`/users/${userId}`, userData);
+      const response = await apiOld.put(`/api/users/${userId}`, userData);
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
         return response.data;
@@ -44,7 +44,7 @@ export const authService = {
 
   async deleteAccount(userId) {
     try {
-      await api.delete(`/users/${userId}`);
+      await apiOld.delete(`/api/users/${userId}`);
       localStorage.removeItem("user");
       localStorage.removeItem("authToken");
     } catch (error) {
@@ -59,7 +59,8 @@ export const authService = {
 
   async register(userData) {
     try {
-      const response = await api.post("/users", userData);
+      console.log(apiOld);
+      const response = await apiOld.post("/api/users", userData);
 
       if (response.data && (response.data._id || response.data.id)) {
         console.log("Registro bem-sucedido:", response.data);

@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import make_response, jsonify, request
 from marshmallow import ValidationError
+from flask_jwt_extended import create_access_token
 
 from ..services.user_service import UserService
 from ..schemas.user_schema import UserSchema
@@ -18,11 +19,13 @@ class UserList(Resource):
             return make_response(jsonify(err.messages), 400)
             
         result = UserService.add_user(data)
+        token = create_access_token(identity=str(result['id']))
         
         
         if 'password' in result:
             result.pop('password', None)
-            
+
+        result['token'] = token 
         return make_response(jsonify(result), 201)
 
 class UserDetail(Resource):

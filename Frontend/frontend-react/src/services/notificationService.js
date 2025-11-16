@@ -1,9 +1,9 @@
-import api from "./api";
+import { apiOld } from "./api";
 
 export const notificationService = {
   async getNotifications(userId) {
     try {
-      const url = `/notifications?user_id=${userId}`;
+      const url = `/api/notifications?user_id=${userId}`;
       const token =
         localStorage.getItem("authToken") ||
         localStorage.getItem("token") ||
@@ -11,7 +11,7 @@ export const notificationService = {
 
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const response = await api.get(url, {
+      const response = await apiOld.get(url, {
         headers,
         timeout: 15000,
       });
@@ -58,8 +58,8 @@ export const notificationService = {
 
   async markAsRead(notificationId) {
     try {
-      const response = await api.patch(
-        `/notifications/${notificationId}`,
+      const response = await apiOld.patch(
+        `/api/notifications/${notificationId}`,
         {},
         {
           timeout: 10000,
@@ -74,7 +74,7 @@ export const notificationService = {
 
   async deleteNotification(notificationId) {
     try {
-      await api.delete(`/notifications/${notificationId}`, {
+      await apiOld.delete(`/api/notifications/${notificationId}`, {
         timeout: 10000,
       });
     } catch (error) {

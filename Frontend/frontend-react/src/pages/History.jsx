@@ -5,6 +5,8 @@ import Modal from "../components/Modal";
 import { PopupConfirmarEdicao } from "../components/PopupConfirmarEdicao";
 import { PopupConfirmarExclusao } from "../components/PopupConfirmarExclusao";
 import { caseService } from "../services/caseService";
+import { iaService } from "../services/iaService";
+import HistoryCards from "../components/HistoryCards";
 
 export default function History() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,18 +15,39 @@ export default function History() {
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [viewMode, setViewMode] = useState("cards");
-  const [filteredData, setFilteredData] = useState([]);
+  const [webData, setWebData] = useState([]);
+  const [mobileData, setMobileData] = useState([]);
+  const [activeTab, setActiveTab] = useState("web");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [data] = useState([]);
-
-  const fetchCases = async () => {
+  const fetchData = async () => {
     try {
       setLoading(true);
-      const cases = await caseService.getAllCases();
-      setFilteredData(cases);
-      setFilteredData(cases);
+
+      const oldCases = await caseService.getAllCases();
+      setWebData(oldCases.map(mapApiToFrontend));
+
+      const user = JSON.parse(localStorage.getItem("user") || "{}");
+      const farmId = user.farmId || "default-farm";
+      console.log("Usando farmId:", farmId);
+
+      const iaData = await iaService.getHistorical(farmId);
+      const mappedIaData = iaData.map((iaItem) => ({
+        id: iaItem._id || Date.now().toString(),
+        date: new Date(iaItem.timestamp).toISOString().split("T")[0],
+        location: iaItem.location || "Eldorado, BR",
+        infestationLevel: iaItem.prediction.includes("doente")
+          ? "Alto"
+          : "Baixo",
+        status: iaItem.prediction || iaItem.status || "Saudável",
+        notes: `Confiança: ${iaItem.confidence}%`,
+        umidade: iaItem.humidity || iaItem.umidade || 0,
+        owner: iaItem.userId || "Usuário Atual",
+        hectares: 0,
+        qtdMudas: 0,
+      }));
+      setMobileData(mappedIaData);
     } catch (err) {
       setError("Erro ao carregar os dados. Tente novamente mais tarde.");
       console.error("Erro:", err);
@@ -34,8 +57,10 @@ export default function History() {
   };
 
   useEffect(() => {
-    fetchCases();
+    fetchData();
   }, []);
+
+  const currentData = activeTab === "web" ? webData : mobileData;
 
   const mapApiToFrontend = (apiData) => {
     return {
@@ -77,7 +102,7 @@ export default function History() {
       await caseService.updateCase(selectedItem.id, apiData);
 
       setShowConfirmEdit(true);
-      fetchCases();
+      fetchData();
     } catch (err) {
       setError("Erro ao atualizar caso");
       console.error("Erro:", err);
@@ -99,7 +124,7 @@ export default function History() {
       await caseService.deleteCase(itemToDelete);
       setShowConfirmDelete(false);
       setItemToDelete(null);
-      fetchCases();
+      fetchData();
     } catch (err) {
       setError("Erro ao deletar caso");
       console.error("Erro:", err);
@@ -176,7 +201,7 @@ export default function History() {
         <main className="p-8">
           <div className="flex justify-between items-center mt-20 mb-6">
             <h2 className="text-xl font-semibold text-gray-800">
-              {filteredData.length} detecções encontradas
+              {currentData.length} detecções encontradas
             </h2>
 
             <div className="flex space-x-2">
@@ -207,9 +232,34 @@ export default function History() {
             </div>
           </div>
 
+          <div className="mb-6">
+            <div className="flex space-x-4 border-b border-gray-200">
+              <button
+                onClick={() => setActiveTab("web")}
+                className={`px-4 py-2 font-medium ${
+                  activeTab === "web"
+                    ? "border-b-2 border-green-600 text-green-600"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                Dados
+              </button>
+              <button
+                onClick={() => setActiveTab("mobile")}
+                className={`px-4 py-2 font-medium ${
+                  activeTab === "mobile"
+                    ? "border-b-2 border-green-600 text-green-600"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                Mobile / IA
+              </button>
+            </div>
+          </div>
+
           {viewMode === "cards" && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredData.map((item) => {
+              {currentData.map((item) => {
                 const frontendItem = mapApiToFrontend(item);
                 return (
                   <div
@@ -388,7 +438,15 @@ export default function History() {
             </div>
           )}
 
-          {filteredData.length === 0 && (
+          {viewMode === "table" && (
+            <HistoryCards
+              data={currentData}
+              onEdit={handleEdit}
+              onDelete={requestDeleteConfirm}
+            />
+          )}
+
+          {currentData.length === 0 && (
             <div className="bg-white rounded-xl shadow-md p-10 text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -410,12 +468,6 @@ export default function History() {
               <p className="mt-2 text-gray-500">
                 Tente ajustar os filtros ou verifique se há novas detecções.
               </p>
-              <button
-                className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-                onClick={() => setFilteredData(data)}
-              >
-                Limpar Filtros
-              </button>
             </div>
           )}
         </main>

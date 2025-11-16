@@ -1,9 +1,9 @@
-import api from "./api";
+import { apiOld } from "./api";
 
 export const caseService = {
   getAllCases: async () => {
     try {
-      const response = await api.get("/case");
+      const response = await apiOld.get("/api/case");
       return response.data;
     } catch (error) {
       console.error("Erro ao buscar casos:", error);
@@ -13,7 +13,7 @@ export const caseService = {
 
   getCaseById: async (id) => {
     try {
-      const response = await api.get(`/case/${id}`);
+      const response = await apiOld.get(`/api/case/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Erro ao buscar caso com ID ${id}:`, error);
@@ -23,7 +23,7 @@ export const caseService = {
 
   createCase: async (caseData) => {
     try {
-      const response = await api.post("/case", caseData);
+      const response = await apiOld.post("/api/case", caseData);
       return response.data;
     } catch (error) {
       console.error("Erro ao criar caso:", error);
@@ -33,7 +33,7 @@ export const caseService = {
 
   updateCase: async (id, caseData) => {
     try {
-      const response = await api.put(`/case/${id}`, caseData);
+      const response = await apiOld.put(`/api/case/${id}`, caseData);
       return response.data;
     } catch (error) {
       console.error(`Erro ao atualizar caso com ID ${id}:`, error);
@@ -42,7 +42,7 @@ export const caseService = {
   },
   deleteCase: async (id) => {
     try {
-      const response = await api.delete(`/case/${id}`);
+      const response = await apiOld.delete(`/api/case/${id}`);
       return response.data;
     } catch (error) {
       console.error("Erro ao deletar caso:", error);

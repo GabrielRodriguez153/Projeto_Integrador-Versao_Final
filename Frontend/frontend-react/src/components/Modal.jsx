@@ -12,7 +12,7 @@ export default function Modal({ isOpen, onClose, children, title }) {
         <div className="bg-gradient-to-r from-emerald-600 to-green-700 p-6">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold text-white">
-              {title || "Editar Detecção"}
+              {title || "Edit Detection"}
             </h2>
             <button
               onClick={onClose}
@@ -31,14 +31,14 @@ export default function Modal({ isOpen, onClose, children, title }) {
               onClick={onClose}
               className="px-5 py-2.5 text-gray-600 hover:bg-gray-100 font-medium rounded-lg transition-colors border border-gray-300 cursor-pointer"
             >
-              Cancelar
+              Cancel
             </button>
             <button
               form="edit-form"
               type="submit"
               className="px-5 py-2.5 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg cursor-pointer"
             >
-              Salvar Alterações
+              Save Changes
             </button>
           </div>
         </div>

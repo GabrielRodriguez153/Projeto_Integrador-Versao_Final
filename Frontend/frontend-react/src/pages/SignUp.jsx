@@ -35,7 +35,7 @@ export default function Signup() {
 
   const validatePassword = (password) => {
     if (password.length < 8) {
-      setPasswordError("A senha deve ter pelo menos 8 caracteres");
+      setPasswordError("The password must be at least 8 characters long.");
       return false;
     }
     setPasswordError("");
@@ -51,11 +51,9 @@ export default function Signup() {
           </div>
           <div className="absolute inset-0  mix-blend-multiply" />
           <div className="absolute bottom-8 left-8 right-8 text-white">
-            <h2 className="text-2xl font-bold mb-2">
-              Junte-se à nossa comunidade
-            </h2>
+            <h2 className="text-2xl font-bold mb-2">Join our community</h2>
             <p className="opacity-90">
-              Transforme sua vida com soluções sustentáveis
+              Transform your life with sustainable solutions
             </p>
           </div>
         </div>
@@ -68,13 +66,13 @@ export default function Signup() {
 
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-2  ">
-                Cadastre-se!{" "}
+                Sign up!{" "}
                 <span className="text-green-600">
-                  Vamos juntos proteger sua plantação.
+                  Let's protect your plantation together.
                 </span>
               </h3>
               <p className="text-gray-600 ">
-                Preencha seus dados e cultive decisões mais seguras.
+                Fill in your data and cultivate safer decisions.
               </p>
             </div>
 
@@ -83,7 +81,7 @@ export default function Signup() {
                 <div className="relative">
                   <input
                     name="username"
-                    placeholder="Nome"
+                    placeholder="Name"
                     className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none transition-all"
                   />
                   <svg
@@ -105,7 +103,7 @@ export default function Signup() {
                 <div className="relative">
                   <input
                     name="telefone"
-                    placeholder="Telefone"
+                    placeholder="Phone"
                     className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none transition-all"
                   />
                   <svg
@@ -129,7 +127,7 @@ export default function Signup() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="E-mail"
                   className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none transition-all"
                 />
                 <svg
@@ -152,7 +150,7 @@ export default function Signup() {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Senha"
+                  placeholder="Password"
                   minLength={8}
                   onChange={(e) => validatePassword(e.target.value)}
                   className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none transition-all"
@@ -181,15 +179,15 @@ export default function Signup() {
                 disabled={isLoading}
                 className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer disabled:opacity-50"
               >
-                {isLoading ? "Carregando..." : "Próximo"}
+                {isLoading ? "Loading..." : "Next"}
               </button>
             </form>
 
             <div className="mt-8 pt-6 border-t border-gray-200 text-center">
               <p className="text-gray-600">
-                Já faz parte da nossa plataforma?
+                Already part of our platform?
                 <a href="/" className="ml-1 text-green-600 font-semibold">
-                  Faça login
+                  Sign in
                 </a>
               </p>
             </div>

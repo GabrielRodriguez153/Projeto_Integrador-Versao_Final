@@ -9,16 +9,16 @@ export const PopupDadosIncorretos = ({ isOpen, onClose }) => {
             <span className="text-red-600 text-2xl">!</span>
           </div>
           <h3 className="text-xl font-bold mt-4 text-red-600">
-            Dados Incorretos
+            Incorrect Credentials
           </h3>
           <p className="mt-2 text-gray-600">
-            Verifique seu e-mail e senha e tente novamente.
+            Please check your email and password and try again.
           </p>
           <button
             onClick={onClose}
             className="mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
           >
-            <a href="/">Tentar Novamente</a>
+            <a href="/">Try Again</a>
           </button>
         </div>
       </div>

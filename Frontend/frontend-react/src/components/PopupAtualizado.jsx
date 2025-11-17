@@ -21,15 +21,15 @@ export const PopupAtualizado = ({ isOpen, onClose }) => {
               ></path>
             </svg>
           </div>
-          <h3 className="text-xl font-bold mt-4">Dados Atualizados!</h3>
+          <h3 className="text-xl font-bold mt-4">Data Updated!</h3>
           <p className="mt-2 text-gray-600">
-            As informações foram atualizadas com sucesso.
+            The information has been successfully updated.
           </p>
           <button
             onClick={onClose}
             className="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
           >
-            Fechar
+            Close
           </button>
         </div>
       </div>

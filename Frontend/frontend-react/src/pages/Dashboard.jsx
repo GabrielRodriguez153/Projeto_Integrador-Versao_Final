@@ -79,7 +79,7 @@ const HealthPieChart = ({
         <span className="text-3xl font-extrabold text-gray-800">
           {total > 0 ? Math.round((saudavel / total) * 100) : 0}%
         </span>
-        <span className="text-sm text-gray-500">Saudáveis</span>
+        <span className="text-sm text-gray-500">Healthy</span>
       </div>
     </div>
   );
@@ -181,7 +181,7 @@ export default function Dashboard() {
       return issueRatio > 0.1;
     }).length;
 
-    let riskLevel = "Baixo";
+    let riskLevel = "Low";
     if (criticalNurseries > 2) {
       riskLevel = "Alto";
     } else if (criticalNurseries > 0) {
@@ -400,7 +400,7 @@ export default function Dashboard() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">
-                  Detalhes do Viveiro
+                  Nursery Details
                 </h3>
                 <p className="text-emerald-100 text-sm">{nurseryData.name}</p>
               </div>
@@ -459,7 +459,7 @@ export default function Dashboard() {
                   <div className="text-3xl font-bold text-emerald-700">
                     {nurseryData.plants}
                   </div>
-                  <p className="text-sm text-gray-600">Total de Mudas</p>
+                  <p className="text-sm text-gray-600">Total Seedlings</p>
                 </div>
               </div>
 
@@ -483,13 +483,13 @@ export default function Dashboard() {
                     </svg>
                   </div>
                   <h4 className="text-sm font-semibold text-gray-800">
-                    Casos de Antracnose
+                    Anthracnose Cases
                   </h4>
                 </div>
                 <div className="text-center py-3 relative z-10">
                   <div className="text-3xl font-bold text-amber-700 mb-1">
                     {nurseryData.issues} <br />
-                    Casos
+                    Cases
                   </div>
 
                   <div className="flex flex-col items-center justify-center mb-2">
@@ -513,8 +513,8 @@ export default function Dashboard() {
                     <span className="text-sm text-amber-600">
                       {nurseryData.plants > 0 &&
                       (nurseryData.issues / nurseryData.plants) * 100 > 5
-                        ? "Alta"
-                        : "Baixa"}
+                        ? "High"
+                        : "Low"}
                     </span>
                   </div>
                 </div>
@@ -540,7 +540,7 @@ export default function Dashboard() {
                     </svg>
                   </div>
                   <h4 className="text-sm font-semibold text-gray-800">
-                    Condição da Umidade
+                    Humidity Condition
                   </h4>
                 </div>
                 <div className="grid gap-2 py-3">
@@ -548,7 +548,7 @@ export default function Dashboard() {
                     <div className="text-3xl pt-6 font-bold text-blue-900">
                       {nurseryData.humidity ?? "-"}%
                     </div>
-                    <div className="text-sm text-gray-600">Umidade</div>
+                    <div className="text-sm text-gray-600">Humidity</div>
                   </div>
                 </div>
               </div>
@@ -565,7 +565,7 @@ export default function Dashboard() {
                   >
                     <path d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm8-6a6 6 0 00-6 6h12a6 6 0 00-6-6z" />
                   </svg>
-                  Distribuição de Saúde
+                  Health Distribution
                 </h4>
 
                 <div className="flex flex-col items-center">
@@ -581,7 +581,7 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <div className="w-3 h-3 rounded-full bg-emerald-400 mr-2"></div>
                       <div className="text-sm">
-                        <span className="font-medium">Saudável: </span>
+                        <span className="font-medium">Healthy: </span>
                         {(() => {
                           const d = getNurseryHealthDistribution(nurseryData);
                           const total = d.saudavel + d.moderado + d.critico;
@@ -595,7 +595,7 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <div className="w-3 h-3 rounded-full bg-amber-400 mr-2"></div>
                       <div className="text-sm">
-                        <span className="font-medium">Moderado: </span>
+                        <span className="font-medium">Moderate: </span>
                         {(() => {
                           const d = getNurseryHealthDistribution(nurseryData);
                           const total = d.saudavel + d.moderado + d.critico;
@@ -609,7 +609,7 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <div className="w-3 h-3 rounded-full bg-red-400 mr-2"></div>
                       <div className="text-sm">
-                        <span className="font-medium">Crítico: </span>
+                        <span className="font-medium">Critical: </span>
                         {(() => {
                           const d = getNurseryHealthDistribution(nurseryData);
                           const total = d.saudavel + d.moderado + d.critico;
@@ -638,7 +638,7 @@ export default function Dashboard() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  Saúde Geral
+                  General Health
                 </h4>
 
                 <div className="space-y-4">
@@ -646,13 +646,13 @@ export default function Dashboard() {
                     <div className="text-3xl font-bold text-emerald-700 mb-1">
                       {Math.round(healthPercentage)}%
                     </div>
-                    <div className="text-sm text-gray-600">Taxa de Saúde</div>
+                    <div className="text-sm text-gray-600">Health Rate</div>
                   </div>
 
                   <div className="bg-white rounded-lg p-2 shadow-md">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-sm font-medium text-gray-800">
-                        Saudáveis
+                        Healthy
                       </span>
                       <span className="text-sm font-bold text-emerald-700">
                         {Math.max(
@@ -681,7 +681,7 @@ export default function Dashboard() {
                   <div className="bg-white rounded-lg p-2 shadow-md">
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-sm font-medium text-gray-800">
-                        Doentes
+                        Sick
                       </span>
                       <span className="text-sm font-bold text-amber-700">
                         {statsData.totalCases}
@@ -706,9 +706,9 @@ export default function Dashboard() {
                     <div className="flex flex-col items-center">
                       <div
                         className={`px-2 py-1 rounded-full text-sm mb-1 ${
-                          statsData.riskLevel === "Baixo"
+                          statsData.riskLevel === "Low"
                             ? "bg-emerald-100 text-emerald-800"
-                            : statsData.riskLevel === "Moderado"
+                            : statsData.riskLevel === "Moderate"
                             ? "bg-amber-100 text-amber-800"
                             : "bg-red-100 text-red-800"
                         }`}
@@ -733,7 +733,7 @@ export default function Dashboard() {
         <div className="ml-64 flex-1 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Carregando dados...</p>
+            <p className="mt-4 text-gray-600">Loading Data...</p>
           </div>
         </div>
       </div>
@@ -747,13 +747,13 @@ export default function Dashboard() {
         <div className="ml-64 flex-1 flex items-center justify-center">
           <div className="text-center">
             <div className="bg-red-100 p-4 rounded-lg">
-              <h3 className="text-red-800 font-bold">Erro ao carregar dados</h3>
+              <h3 className="text-red-800 font-bold">Error Loading Data</h3>
               <p className="text-red-600">{error}</p>
               <button
                 onClick={fetchCases}
                 className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
               >
-                Tentar Novamente
+                Try Again
               </button>
             </div>
           </div>
@@ -766,7 +766,7 @@ export default function Dashboard() {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
       <div className="ml-64 flex-1">
-        <Navbar title="Monitoramento de Viveiros" />
+        <Navbar title="Nursery Monitoring" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-24 mx-10">
           <div className="bg-white p-6 rounded-xl shadow text-center border-l-4 border-emerald-500">
@@ -788,11 +788,11 @@ export default function Dashboard() {
                 </svg>
               </div>
               <h3 className="text-gray-600 font-medium text-base">
-                Mudas Monitoradas
+                Monitored Seedlings
               </h3>
             </div>
             <div className="text-4xl font-bold text-emerald-600">
-              {statsData.totalPlants} Mudas
+              {statsData.totalPlants} Seedlings
             </div>
           </div>
 
@@ -815,11 +815,11 @@ export default function Dashboard() {
                 </svg>
               </div>
               <h3 className="text-gray-600 font-medium text-base">
-                Casos de Antracnose
+                Anthracnose Cases
               </h3>
             </div>
             <div className="text-4xl font-bold text-amber-600">
-              {numCases} Casos
+              {numCases} Cases
             </div>
           </div>
 
@@ -842,14 +842,14 @@ export default function Dashboard() {
                 </svg>
               </div>
               <h3 className="text-gray-600 font-medium text-base">
-                Risco Médio
+                Average Risk
               </h3>
             </div>
             <div className="text-4xl font-bold text-blue-600">
               {statsData.riskLevel}
             </div>
             <div className="mt-2 text-base text-gray-500">
-              Baseado na análise dos casos
+              Based on case analysis
             </div>
           </div>
         </div>
@@ -868,7 +868,7 @@ export default function Dashboard() {
                 clipRule="evenodd"
               />
             </svg>
-            Visão Geral dos Viveiros
+            Nurseries Overview
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-10">
@@ -892,13 +892,13 @@ export default function Dashboard() {
 
                   <div className="mt-4 flex justify-between">
                     <div className="text-center">
-                      <div className="text-xs text-gray-500">Mudas</div>
+                      <div className="text-xs text-gray-500">Seedlings</div>
                       <div className="font-bold text-emerald-600">
                         {nursery.plants}
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xs text-gray-500">Problemas</div>
+                      <div className="text-xs text-gray-500">Problems</div>
                       <div className="font-bold text-amber-600">
                         {nursery.issues}
                       </div>
@@ -927,7 +927,7 @@ export default function Dashboard() {
               ))
             ) : (
               <div className="col-span-5 text-center py-8">
-                <p className="text-gray-500">Nenhum viveiro encontrado</p>
+                <p className="text-gray-500">No nurseries found</p>
               </div>
             )}
           </div>
@@ -944,7 +944,7 @@ export default function Dashboard() {
                 }`}
                 onClick={() => setActiveTab("overview")}
               >
-                Saúde das Mudas
+                Seedling Health
               </button>
             </nav>
           </div>
@@ -966,7 +966,7 @@ export default function Dashboard() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Distribuição de Saúde das Mudas
+                    Seedlings Health Distribution
                   </h4>
                   <div
                     className="flex items-center justify-center"
@@ -979,19 +979,19 @@ export default function Dashboard() {
                     <div className="flex items-center">
                       <div className="w-4 h-4 rounded-full bg-green-400 mr-2"></div>
                       <span className="text-gray-600">
-                        Saudável: {healthDistribution.saudavel}%
+                        Healthy: {healthDistribution.saudavel}%
                       </span>
                     </div>
                     <div className="flex items-center">
                       <div className="w-4 h-4 rounded-full bg-amber-400 mr-2"></div>
                       <span className="text-gray-600">
-                        Moderado: {healthDistribution.moderado}%
+                        Moderate: {healthDistribution.moderado}%
                       </span>
                     </div>
                     <div className="flex items-center">
                       <div className="w-4 h-4 rounded-full bg-red-400 mr-2"></div>
                       <span className="text-gray-600">
-                        Crítico: {healthDistribution.critico}%
+                        Critical: {healthDistribution.critico}%
                       </span>
                     </div>
                   </div>
@@ -1012,7 +1012,7 @@ export default function Dashboard() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      Alertas e Notificações
+                      Alerts and Notifications
                     </h4>
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-2"></div>
@@ -1022,11 +1022,11 @@ export default function Dashboard() {
                     {notifications.length > 0 ? (
                       notifications.map((item) => {
                         const isCritico =
-                          item.type.includes("critic") ||
+                          item.type.includes("Critic") ||
                           item.type.includes("error") ||
                           item.type.includes("alta");
                         const isAlerta =
-                          item.type.includes("alert") ||
+                          item.type.includes("Alert") ||
                           item.type.includes("warn") ||
                           item.type.includes("moderat");
 
@@ -1129,13 +1129,13 @@ export default function Dashboard() {
                           />
                         </svg>
                         <p className="mt-2 text-gray-500">
-                          Nenhuma notificação encontrada
+                          No notifications found
                         </p>
                         <button
                           onClick={() => fetchNotifications(currentUserId)}
                           className="mt-2 text-emerald-600 hover:text-emerald-800 text-sm font-medium"
                         >
-                          Recarregar notificações
+                          Reload notifications
                         </button>
                       </div>
                     )}

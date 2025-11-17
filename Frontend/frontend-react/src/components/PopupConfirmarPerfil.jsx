@@ -21,22 +21,22 @@ export const PopupConfirmarPerfil = ({ isOpen, onClose, onConfirm }) => {
               ></path>
             </svg>
           </div>
-          <h3 className="text-xl font-bold mt-4">Salvar Alterações?</h3>
+          <h3 className="text-xl font-bold mt-4">Save Changes?</h3>
           <p className="mt-2 text-gray-600">
-            Confirme as alterações no seu perfil
+            Confirm the changes to your profil
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <button
               onClick={onClose}
               className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-full transition cursor-pointer"
             >
-              Cancelar
+              Cancel
             </button>
             <button
               onClick={onConfirm}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
             >
-              Salvar
+              Save
             </button>
           </div>
         </div>

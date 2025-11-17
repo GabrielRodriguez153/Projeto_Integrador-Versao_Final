@@ -22,14 +22,14 @@ export const PopupAcessoConcedido = ({ isOpen, onClose }) => {
             </svg>
           </div>
           <h3 className="text-xl font-bold mt-4 text-green-600">
-            Acesso Concedido!
+            Access Granted!
           </h3>
-          <p className="mt-2 text-gray-600">Login realizado com sucesso.</p>
+          <p className="mt-2 text-gray-600">Login successful.</p>
           <button
             onClick={onClose}
             className="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
           >
-            <a href="/main">Continuar</a>
+            <a href="/main">Continue</a>
           </button>
         </div>
       </div>

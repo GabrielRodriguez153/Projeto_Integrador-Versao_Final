@@ -22,16 +22,16 @@ export const PopupContaCriada = ({ isOpen, onClose }) => {
             </svg>
           </div>
           <h3 className="text-xl font-bold mt-4 text-blue-600">
-            Conta Criada!
+            Account Created!
           </h3>
           <p className="mt-2 text-gray-600">
-            Sua conta foi registrada com sucesso.
+            Your account has been successfully registered.
           </p>
           <button
             onClick={onClose}
             className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
           >
-            <a href="/main">Iniciar Sessão</a>
+            <a href="/main">Start Session</a>
           </button>
         </div>
       </div>

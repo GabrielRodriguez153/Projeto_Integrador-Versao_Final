@@ -54,11 +54,11 @@ export default function Signup2() {
           }, 2000);
         }
       } else {
-        setErrorMessage("Erro ao finalizar cadastro. Tente novamente.");
+        setErrorMessage("Error completing registration. Please try again.");
         alert(errorMessage);
       }
     } catch (error) {
-      setErrorMessage(error.message || "Erro ao finalizar cadastro");
+      setErrorMessage(error.message || "Error completing registration");
       alert(errorMessage);
     } finally {
       setIsLoading(false);
@@ -87,7 +87,7 @@ export default function Signup2() {
                 d="M15 19l-7-7 7-7"
               ></path>
             </svg>
-            Voltar
+            Back
           </button>
           <img
             src={Fundo}
@@ -95,9 +95,9 @@ export default function Signup2() {
             alt="Fundo cadastro"
           />
           <div className="absolute bottom-8 left-8 right-8 text-white">
-            <h2 className="text-2xl font-bold mb-2">Quase lá!</h2>
+            <h2 className="text-2xl font-bold mb-2">Almost there!</h2>
             <p className="opacity-90">
-              Complete seu cadastro e comece a jornada
+              Complete your registration and start the journey
             </p>
           </div>
         </div>
@@ -110,18 +110,16 @@ export default function Signup2() {
 
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-green-700 mb-2">
-                Tudo certo! Finalize e acesse já!
+                All set! Finish and access now!
               </h3>
-              <p className="text-gray-600">
-                Precisamos apenas de mais alguns detalhes
-              </p>
+              <p className="text-gray-600">We just need a few more details</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="relative">
                 <input
                   name="logradouro"
-                  placeholder="Endereço"
+                  placeholder="Address"
                   required
                   className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all focus:outline-none"
                 />
@@ -150,7 +148,7 @@ export default function Signup2() {
               <div className="relative">
                 <input
                   name="cidade"
-                  placeholder="Cidade"
+                  placeholder="City"
                   required
                   className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all focus:outline-none"
                 />
@@ -177,7 +175,7 @@ export default function Signup2() {
                     required
                     className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all appearance-none focus:outline-none"
                   >
-                    <option value="">Selecione o estado</option>
+                    <option value="">Select state</option>
                     <option value="Acre (AC)">Acre (AC)</option>
                     <option value="Alagoas (AL)">Alagoas (AL)</option>
                     <option value="Amapá (AP)">Amapá (AP)</option>
@@ -246,7 +244,7 @@ export default function Signup2() {
                 <div className="relative">
                   <input
                     name="cep"
-                    placeholder="CEP"
+                    placeholder="ZIP Code"
                     required
                     className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all focus:outline-none"
                   />
@@ -265,18 +263,18 @@ export default function Signup2() {
                 disabled={isLoading}
                 className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center cursor-pointer disabled:opacity-50"
               >
-                {isLoading ? "Finalizando..." : "Finalizar Cadastro"}
+                {isLoading ? "Finalizing..." : "Complete Registration"}
               </button>
             </form>
 
             <div className="mt-8 pt-6 border-t border-gray-200 text-center">
               <p className="text-gray-600">
-                Já faz parte da nossa plataforma?
+                Already part of our platform?
                 <a
                   href="/"
                   className="ml-1 text-green-600 font-semibold hover:underline"
                 >
-                  Faça login
+                  Sign in
                 </a>
               </p>
             </div>

@@ -37,20 +37,20 @@ export const notificationService = {
     return [
       {
         id: 1,
-        message: "Viveiro A apresenta umidade abaixo do ideal",
-        type: "alerta",
+        message: "North Nursery has below-ideal humidity",
+        type: "Alert",
         timestamp: new Date().toISOString(),
       },
       {
         id: 2,
-        message: "Novo caso de antracnose detectado no Viveiro B",
-        type: "critico",
+        message: "New anthracnose case detected in the South Nursery",
+        type: "Critical",
         timestamp: new Date(Date.now() - 3600000).toISOString(),
       },
       {
         id: 3,
-        message: "Viveiro C está com condições ideais",
-        type: "info",
+        message: "Central Nursery is in ideal conditions",
+        type: "Info",
         timestamp: new Date(Date.now() - 7200000).toISOString(),
       },
     ];

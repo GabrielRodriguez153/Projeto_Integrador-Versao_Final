@@ -24,17 +24,17 @@ export default function Login() {
     try {
       const result = await authService.login(email, password);
 
-      if (result.message === "Login realizado com sucesso") {
+      if (result.message === "Login successful") {
         setShowLoginSuccess(true);
         setTimeout(() => {
           navigate("/main");
         }, 1500);
       } else {
-        setErrorMessage(result.message || "Email ou senha inválidos");
+        setErrorMessage(result.message || "Invalid email or password");
         setShowLoginError(true);
       }
     } catch (error) {
-      setErrorMessage(error.message || "Erro ao fazer login");
+      setErrorMessage(error.message || "Error logging in");
       setShowLoginError(true);
     } finally {
       setIsLoading(false);
@@ -54,11 +54,11 @@ export default function Login() {
           </div>
           <div className="absolute bottom-10 left-10 right-10 text-white z-2">
             <h2 className="text-3xl font-bold mb-3">
-              Cuidando do futuro das suas plantações
+              Taking care of your plantations' future
             </h2>
             <p className="opacity-80">
-              Monitore, analise e previna doenças com nossa plataforma
-              especializada
+              Monitor, analyze and prevent diseases with our specialized
+              platform
             </p>
           </div>
         </div>
@@ -70,10 +70,10 @@ export default function Login() {
             </div>
             <div className="text-center mb-10">
               <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                Bem-vindo <span className="text-green-600">de volta!</span>
+                Welcome <span className="text-green-600">back!</span>
               </h1>
               <p className="text-gray-600">
-                Seus olhos no campo começam com um clique.
+                Your eyes in the field start with a click.
               </p>
             </div>
 
@@ -82,7 +82,7 @@ export default function Login() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="E-mail"
                   className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none transition-all"
                   required
                 />
@@ -108,7 +108,7 @@ export default function Login() {
                 <input
                   type="password"
                   name="password"
-                  placeholder="Senha"
+                  placeholder="Password"
                   className="w-full p-4 pl-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none transition-all"
                   required
                 />
@@ -134,17 +134,17 @@ export default function Login() {
                 type="submit"
                 className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                Entrar
+                Enter
               </button>
 
               <div className="mt-4 pt-6 border-t border-gray-200 text-center">
                 <p className="text-gray-600">
-                  Ainda não faz parte?{" "}
+                  Not a member yet?{" "}
                   <a
                     href="/signup"
                     className="font-semibold text-green-600 transition-colors"
                   >
-                    Crie sua conta agora.
+                    Create your account now.
                   </a>
                 </p>
               </div>

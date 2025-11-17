@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Navbar({ title, onRefresh }) {
-  // Recuperar os dados do usuário do localStorage
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
@@ -15,7 +14,7 @@ export default function Navbar({ title, onRefresh }) {
             className="bg-emerald-600 text-white px-5 py-2 rounded-full font-bold hover:bg-emerald-700 transition-colors flex items-center gap-2 cursor-pointer"
           >
             <i className="fas fa-sync-alt"></i>
-            <span>Atualizar</span>
+            <span>Refresh</span>
           </button>
         )}
 

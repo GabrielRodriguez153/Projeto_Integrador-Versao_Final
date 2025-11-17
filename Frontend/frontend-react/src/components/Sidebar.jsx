@@ -92,7 +92,7 @@ export default function Sidebar() {
                 className="fas fa-folder text-lg w-6 pr-10 text-center text-current"
                 aria-hidden="true"
               ></i>
-              <span>Histórico</span>
+              <span>History</span>
             </div>
           )}
         </NavLink>
@@ -118,7 +118,7 @@ export default function Sidebar() {
                 className="fas fa-cogs text-lg w-6 pr-10 text-center text-current"
                 aria-hidden="true"
               ></i>
-              <span>Configurações</span>
+              <span>Settings</span>
             </div>
           )}
         </NavLink>
@@ -134,7 +134,7 @@ export default function Sidebar() {
               className="fas fa-sign-out-alt text-lg w-6 text-center text-current"
               aria-hidden="true"
             ></i>
-            <span>Sair</span>
+            <span>Logout</span>
           </button>
         </div>
       </div>

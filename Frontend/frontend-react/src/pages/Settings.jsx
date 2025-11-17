@@ -57,7 +57,7 @@ export default function Settings() {
 
   const validatePassword = (password) => {
     if (password && password.length < 8) {
-      setPasswordError("A senha deve ter pelo menos 8 caracteres");
+      setPasswordError("The password must be at least 8 characters long");
       return false;
     }
     setPasswordError("");
@@ -141,7 +141,7 @@ export default function Settings() {
         <div className="ml-64 flex-1 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Carregando dados...</p>
+            <p className="mt-4 text-gray-600">Loading Data...</p>
           </div>
         </div>
       </div>
@@ -153,30 +153,28 @@ export default function Settings() {
       <Sidebar />
 
       <div className="ml-64 flex-1 overflow-auto">
-        <Navbar title="Configurações" />
+        <Navbar title="Settings" />
 
         <div className="p-6 max-w-4xl mx-auto mt-18">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">
-                Perfil do Usuário
-              </h1>
+              <h1 className="text-2xl font-bold text-gray-800">User Profile</h1>
               <p className="text-gray-500 text-sm">
-                Gerencie suas informações pessoais
+                Manage your personal information
               </p>
             </div>
             <button
               onClick={() => setIsEditing(!isEditing)}
               className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-md cursor-pointer focus:outline-none"
             >
-              {isEditing ? "Cancelar Edição" : "Editar Perfil"}
+              {isEditing ? "Cancel Edit" : "Edit Profile"}
             </button>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-5 border-b border-gray-100 bg-gradient-to-r from-emerald-600 to-green-700">
               <h2 className="text-xl font-bold text-neutral-50">
-                Dados Pessoais
+                Personal Data
               </h2>
             </div>
 
@@ -185,7 +183,7 @@ export default function Settings() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm text-gray-600 mb-2">
-                      Nome Completo
+                      Full Name
                     </label>
                     {isEditing ? (
                       <input
@@ -204,7 +202,7 @@ export default function Settings() {
 
                   <div>
                     <label className="block text-sm text-gray-600 mb-2">
-                      Telefone
+                      Phone
                     </label>
                     {isEditing ? (
                       <input
@@ -225,7 +223,7 @@ export default function Settings() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm text-gray-600 mb-2">
-                      Email
+                      E-mail
                     </label>
                     {isEditing ? (
                       <input
@@ -244,7 +242,7 @@ export default function Settings() {
 
                   <div>
                     <label className="block text-sm text-gray-600 mb-2">
-                      Senha
+                      Password
                     </label>
                     {isEditing ? (
                       <div className="relative">
@@ -316,7 +314,7 @@ export default function Settings() {
                             setShowPassword(false);
                           }}
                         >
-                          Alterar Senha
+                          Change Password
                         </button>
                       </div>
                     )}
@@ -327,7 +325,7 @@ export default function Settings() {
               <div className="mt-4 pt-6 border-t border-gray-100">
                 <div className="p-1 mb-5">
                   <h2 className="text-lg font-semibold text-gray-800">
-                    Dados do Endereço
+                    Address Data
                   </h2>
                 </div>
 
@@ -335,7 +333,7 @@ export default function Settings() {
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm text-gray-600 mb-2">
-                        Endereço
+                        Address
                       </label>
                       {isEditing ? (
                         <input
@@ -354,7 +352,7 @@ export default function Settings() {
 
                     <div>
                       <label className="block text-sm text-gray-600 mb-2">
-                        Cidade
+                        City
                       </label>
                       {isEditing ? (
                         <input
@@ -375,7 +373,7 @@ export default function Settings() {
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm text-gray-600 mb-2">
-                        Estado
+                        State
                       </label>
                       {isEditing ? (
                         <select
@@ -384,16 +382,53 @@ export default function Settings() {
                           onChange={handleChange}
                           className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 bg-white focus:outline-none"
                         >
-                          <option value="São Paulo (SP)">São Paulo (SP)</option>
-                          <option value="Rio de Janeiro (RJ)">
-                            Rio de Janeiro (RJ)
-                          </option>
-                          <option value="Minas Gerais (MG)">
-                            Minas Gerais (MG)
+                          <option value="Acre (AC)">Acre (AC)</option>
+                          <option value="Alagoas (AL)">Alagoas (AL)</option>
+                          <option value="Amapá (AP)">Amapá (AP)</option>
+                          <option value="Amazonas (AM)">Amazonas (AM)</option>
+                          <option value="Bahia (BA)">Bahia (BA)</option>
+                          <option value="Ceará (CE)">Ceará (CE)</option>
+                          <option value="Distrito Federal (DF)">
+                            Distrito Federal (DF)
                           </option>
                           <option value="Espírito Santo (ES)">
                             Espírito Santo (ES)
                           </option>
+                          <option value="Goiás (GO)">Goiás (GO)</option>
+                          <option value="Maranhão (MA)">Maranhão (MA)</option>
+                          <option value="Mato Grosso (MT)">
+                            Mato Grosso (MT)
+                          </option>
+                          <option value="Mato Grosso do Sul (MS)">
+                            Mato Grosso do Sul (MS)
+                          </option>
+                          <option value="Minas Gerais (MG)">
+                            Minas Gerais (MG)
+                          </option>
+                          <option value="Pará (PA)">Pará (PA)</option>
+                          <option value="Paraíba (PB)">Paraíba (PB)</option>
+                          <option value="Paraná (PR)">Paraná (PR)</option>
+                          <option value="Pernambuco (PE)">
+                            Pernambuco (PE)
+                          </option>
+                          <option value="Piauí (PI)">Piauí (PI)</option>
+                          <option value="Rio de Janeiro (RJ)">
+                            Rio de Janeiro (RJ)
+                          </option>
+                          <option value="Rio Grande do Norte (RN)">
+                            Rio Grande do Norte (RN)
+                          </option>
+                          <option value="Rio Grande do Sul (RS)">
+                            Rio Grande do Sul (RS)
+                          </option>
+                          <option value="Rondônia (RO)">Rondônia (RO)</option>
+                          <option value="Roraima (RR)">Roraima (RR)</option>
+                          <option value="Santa Catarina (SC)">
+                            Santa Catarina (SC)
+                          </option>
+                          <option value="São Paulo (SP)">São Paulo (SP)</option>
+                          <option value="Sergipe (SE)">Sergipe (SE)</option>
+                          <option value="Tocantins (TO)">Tocantins (TO)</option>
                         </select>
                       ) : (
                         <div className="p-3 bg-gray-50 rounded-lg font-medium">
@@ -404,7 +439,7 @@ export default function Settings() {
 
                     <div>
                       <label className="block text-sm text-gray-600 mb-2">
-                        CEP
+                        ZIP Code
                       </label>
                       {isEditing ? (
                         <input
@@ -430,7 +465,7 @@ export default function Settings() {
                     type="submit"
                     className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg shadow-md focus:outline-none cursor-pointer"
                   >
-                    Salvar Alterações
+                    Save Changes
                   </button>
                 </div>
               )}
@@ -440,23 +475,23 @@ export default function Settings() {
           <div className="mt-6 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="p-4 border-b border-gray-100 bg-gradient-to-r from-emerald-600 to-green-700">
               <h2 className="text-xl font-bold text-neutral-50">
-                Configurações de Segurança
+                Security Settings
               </h2>
             </div>
 
             <div className="p-5">
               <div className="flex justify-between items-center  border-t border-gray-100">
                 <div>
-                  <h3 className="font-medium text-red-600">Excluir Conta</h3>
+                  <h3 className="font-medium text-red-600">Delete Account</h3>
                   <p className="text-red-500 text-sm mt-1">
-                    Esta ação é permanente e não pode ser desfeita
+                    This action is permanent and cannot be undone
                   </p>
                 </div>
                 <button
                   onClick={handleDeleteAccount}
                   className="px-4 py-2 bg-white border border-red-200 rounded-lg text-red-600 hover:bg-red-50 text-sm"
                 >
-                  Excluir Minha Conta
+                  Delete My Account
                 </button>
               </div>
             </div>

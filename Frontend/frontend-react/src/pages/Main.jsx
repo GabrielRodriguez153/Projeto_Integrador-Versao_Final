@@ -41,52 +41,52 @@ export default function Main() {
 
     const criticalCases = cases.filter(
       (caseItem) =>
-        caseItem.nivelInfestacao === "Crítico" ||
-        caseItem.nivelInfestacao === "Crítico"
+        caseItem.nivelInfestacao === "Critical" ||
+        caseItem.nivelInfestacao === "Critical"
     ).length;
 
     const mediumCases = cases.filter(
       (caseItem) =>
-        caseItem.nivelInfestacao === "Moderado" ||
-        caseItem.nivelInfestacao === "Moderado"
+        caseItem.nivelInfestacao === "Moderate" ||
+        caseItem.nivelInfestacao === "Moderate"
     ).length;
 
     const lowCases = cases.filter(
       (caseItem) =>
-        caseItem.nivelInfestacao === "Saudável" ||
-        caseItem.nivelInfestacao === "Saudável"
+        caseItem.nivelInfestacao === "Healthy" ||
+        caseItem.nivelInfestacao === "Healthy"
     ).length;
 
     let severitySum = 0;
     cases.forEach((caseItem) => {
-      if (caseItem.nivelInfestacao === "Saudável") severitySum += 1;
-      else if (caseItem.nivelInfestacao === "Moderado") severitySum += 2;
-      else if (caseItem.nivelInfestacao === "Crítico") severitySum += 3;
+      if (caseItem.nivelInfestacao === "Healthy") severitySum += 1;
+      else if (caseItem.nivelInfestacao === "Moderate") severitySum += 2;
+      else if (caseItem.nivelInfestacao === "Critical") severitySum += 3;
     });
 
     const averageSeverity =
       totalCases > 0 ? (severitySum / totalCases).toFixed(1) : "0.0";
 
-    let overallStatus = "Estável";
-    if (criticalCases > totalCases * 0.3) overallStatus = "Crítico";
-    else if (criticalCases > totalCases * 0.1) overallStatus = "Alerta";
+    let overallStatus = "Stable";
+    if (criticalCases > totalCases * 0.3) overallStatus = "Critical";
+    else if (criticalCases > totalCases * 0.1) overallStatus = "Moderate";
 
     let riskForecast = {
       time: "6h",
-      level: "Baixo",
-      description: "Baixo risco nas próximas horas",
+      level: "Low",
+      description: "Low risk in the next few hours",
     };
     if (criticalCases > totalCases * 0.2) {
       riskForecast = {
         time: "2h",
-        level: "Alto",
-        description: "Alto risco nas próximas horas",
+        level: "High",
+        description: "High risk in the next few hours",
       };
     } else if (criticalCases > totalCases * 0.1) {
       riskForecast = {
         time: "4h",
-        level: "Médio",
-        description: "Médio risco nas próximas horas",
+        level: "Medium",
+        description: "Medium risk in the next few hours",
       };
     }
     return {
@@ -107,7 +107,7 @@ export default function Main() {
         <div className="ml-64 flex-1 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Carregando dados...</p>
+            <p className="mt-4 text-gray-600">Loading Data...</p>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ export default function Main() {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
       <div className="ml-64 flex-1">
-        <Navbar title="Visão Geral" onRefresh={handleRefresh} />
+        <Navbar title="Overview" onRefresh={handleRefresh} />
 
         <main className="mt-25 p-8 relative">
           <div className="mb-6 text-center">
@@ -128,16 +128,16 @@ export default function Main() {
               <img src={Logo_Green} alt="Logo" className="w-48 mx-auto mb-4" />
             </div>
             <h1 className="text-4xl font-bold text-emerald-700 mb-2">
-              Bem-vindo ao AntraVision
+              Welcome to AntraVision
             </h1>
             <p className="text-xl text-gray-600">
-              Sistema Inteligente de Monitoramento de Antracnose
+              Intelligent Anthracnose Monitoring System
             </p>
           </div>
 
           <div className="mb-5 flex justify-center items-center">
             <div className="bg-white py-2 px-4 rounded-full shadow flex items-center">
-              <span className="text-gray-500 mr-2">Última atualização:</span>
+              <span className="text-gray-500 mr-2">Last update:</span>
               <span className="font-medium">{lastUpdate}</span>
               <div className="ml-4 w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
             </div>
@@ -148,7 +148,7 @@ export default function Main() {
               <div className="flex justify-between items-start mt-4.5">
                 <div>
                   <h3 className="text-gray-500 text-sm font-medium">
-                    Status Geral
+                    Overall Status
                   </h3>
                   <p className="text-2xl font-bold mt-2">
                     {stats.overallStatus}
@@ -164,10 +164,10 @@ export default function Main() {
               <div className="flex justify-between items-start mt-4.5">
                 <div>
                   <h3 className="text-gray-500 text-sm font-medium">
-                    Total de Casos
+                    Total Cases
                   </h3>
                   <p className="text-2xl font-bold mt-2">
-                    {stats.totalCases} Casos
+                    {stats.totalCases} Cases
                   </p>
                 </div>
                 <div className="bg-blue-100 p-2.5 rounded-full">
@@ -180,7 +180,7 @@ export default function Main() {
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="text-gray-500 text-sm font-medium">
-                    Gravidade
+                    Severity
                   </h3>
                   <p className="text-2xl font-bold mt-2">
                     {stats.averageSeverity} %
@@ -192,7 +192,7 @@ export default function Main() {
               </div>
               <div className="mt-4 flex items-center">
                 <span className="text-amber-600 text-sm font-medium">
-                  {stats.averageSeverity >= 2.5 ? "Moderada" : "Baixa"}
+                  {stats.averageSeverity >= 2.5 ? "Moderate" : "Low"}
                 </span>
                 <div className="ml-2 w-full bg-gray-200 rounded-full h-2">
                   <div
@@ -209,7 +209,7 @@ export default function Main() {
             <div className="flex justify-between items-start relative z-10">
               <div>
                 <h3 className="text-gray-500 text-sm font-medium">
-                  Previsão de Risco
+                  Risk Forecast
                 </h3>
                 <p className="text-2xl font-bold mt-2">
                   {stats.riskForecast.time}

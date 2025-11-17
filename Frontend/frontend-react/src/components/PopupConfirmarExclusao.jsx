@@ -22,23 +22,23 @@ export const PopupConfirmarExclusao = ({ isOpen, onClose, onConfirm }) => {
             </svg>
           </div>
           <h3 className="text-xl font-bold mt-4 text-red-600">
-            Confirmar Exclusão
+            Confirm Deletion
           </h3>
           <p className="mt-2 text-gray-600">
-            Esta ação é irreversível. Tem certeza que deseja excluir?
+            This action is irreversible. Are you sure you want to delete?
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <button
               onClick={onClose}
               className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-full transition cursor-pointer"
             >
-              Cancelar
+              Cancel
             </button>
             <button
               onClick={onConfirm}
               className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
             >
-              Excluir
+              Delete
             </button>
           </div>
         </div>

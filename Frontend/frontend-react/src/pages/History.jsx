@@ -10,13 +10,13 @@ import { iaService } from "../services/iaService";
 const WebCard = ({ item, onEdit, onDelete }) => {
   const getInfestationColor = (level) => {
     switch (level) {
-      case "Baixo":
+      case "Healthy":
         return "bg-green-100 text-green-800";
-      case "Médio":
+      case "Moderate":
         return "bg-yellow-100 text-yellow-800";
-      case "Alto":
+      case "Under treatment":
         return "bg-orange-100 text-orange-800";
-      case "Crítico":
+      case "Critical":
         return "bg-red-100 text-red-800";
       default:
         return "bg-gray-100 text-gray-800";
@@ -25,13 +25,11 @@ const WebCard = ({ item, onEdit, onDelete }) => {
 
   const getStatusColor = (status) => {
     switch (status) {
-      case "Saudável":
+      case "Active":
         return "bg-green-100 text-green-800";
-      case "Estável":
+      case "Inactive":
         return "bg-blue-100 text-blue-800";
-      case "Em tratamento":
-        return "bg-purple-100 text-purple-800";
-      case "Crítico":
+      case "Critical":
         return "bg-red-100 text-red-800";
       default:
         return "bg-gray-100 text-gray-800";
@@ -114,7 +112,7 @@ const WebCard = ({ item, onEdit, onDelete }) => {
               />
             </svg>
             <div>
-              <p className="text-xs text-gray-500">Proprietário</p>
+              <p className="text-xs text-gray-500">Owner</p>
               <p className="text-sm font-medium">{item.owner}</p>
             </div>
           </div>
@@ -135,7 +133,7 @@ const WebCard = ({ item, onEdit, onDelete }) => {
               />
             </svg>
             <div>
-              <p className="text-xs text-gray-500">Área</p>
+              <p className="text-xs text-gray-500">Area</p>
               <p className="text-sm font-medium">{item.hectares} ha</p>
             </div>
           </div>
@@ -156,7 +154,7 @@ const WebCard = ({ item, onEdit, onDelete }) => {
               />
             </svg>
             <div>
-              <p className="text-xs text-gray-500">Mudas</p>
+              <p className="text-xs text-gray-500">Seedlings</p>
               <p className="text-sm font-medium">{item.qtdMudas}</p>
             </div>
           </div>
@@ -177,7 +175,7 @@ const WebCard = ({ item, onEdit, onDelete }) => {
               />
             </svg>
             <div>
-              <p className="text-xs text-gray-500">Umidade</p>
+              <p className="text-xs text-gray-500">Humidity</p>
               <p className="text-sm font-medium">{item.umidade}%</p>
             </div>
           </div>
@@ -185,7 +183,7 @@ const WebCard = ({ item, onEdit, onDelete }) => {
 
         <div className="mt-4 pt-4 border-t border-gray-100">
           <p className="text-gray-600 text-sm">
-            <span className="font-medium">Observações:</span> {item.notes}
+            <span className="font-medium">Observations:</span> {item.notes}
           </p>
         </div>
       </div>
@@ -234,10 +232,10 @@ const IACard = ({ item }) => {
           </div>
           <div className="flex space-x-2">
             <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-              IA
+              AI
             </span>
             <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-              Automático
+              Automatic
             </span>
           </div>
         </div>
@@ -262,7 +260,7 @@ const IACard = ({ item }) => {
         <div className="mt-4 space-y-3">
           <div className="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
             <span className="text-sm font-medium text-blue-800">
-              Confiança da IA
+              AI Confidence
             </span>
             <span className="text-lg font-bold text-blue-800">
               {item.confidence}%
@@ -285,14 +283,14 @@ const IACard = ({ item }) => {
               />
             </svg>
             <div>
-              <p className="text-xs text-gray-500">Diagnóstico</p>
+              <p className="text-xs text-gray-500">Diagnosis</p>
               <p className="text-sm font-medium">{item.prediction}</p>
             </div>
           </div>
 
           <div className="mt-3">
             <div className="flex justify-between text-xs text-gray-600 mb-1">
-              <span>Confiança da Predição</span>
+              <span>Prediction Confidence</span>
               <span className="font-medium">{item.confidence}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
@@ -312,7 +310,7 @@ const IACard = ({ item }) => {
 
         <div className="mt-4 pt-4 border-t border-gray-100">
           <p className="text-gray-600 text-sm">
-            <span className="font-medium">Análise:</span> {item.notes}
+            <span className="font-medium">Analysis:</span> {item.notes}
           </p>
         </div>
       </div>
@@ -543,7 +541,7 @@ export default function History() {
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
         <div className="flex-1 ml-64 flex items-center justify-center">
-          <div className="text-xl">Carregando...</div>
+          <div className="text-xl">Loading Data...</div>
         </div>
       </div>
     );
@@ -564,12 +562,12 @@ export default function History() {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
       <div className="flex-1 ml-64">
-        <Navbar title="Histórico de Detecções" />
+        <Navbar title="Detection History" />
 
         <main className="p-8">
           <div className="flex justify-between items-center mt-20 mb-6">
             <h2 className="text-xl font-semibold text-gray-800">
-              {currentData.length} detecções encontradas
+              {currentData.length} detections found
             </h2>
           </div>
 
@@ -583,7 +581,7 @@ export default function History() {
                     : "text-gray-500 hover:text-gray-700"
                 }`}
               >
-                Dados Web
+                Web Data
               </button>
               <button
                 onClick={() => setActiveTab("mobile")}
@@ -593,7 +591,7 @@ export default function History() {
                     : "text-gray-500 hover:text-gray-700"
                 }`}
               >
-                Mobile / IA
+                Mobile / AI
               </button>
             </div>
           </div>
@@ -648,7 +646,7 @@ export default function History() {
         <Modal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          title="Editar Detecção"
+          title="Edit Detection"
         >
           {selectedItem && (
             <form
@@ -658,7 +656,176 @@ export default function History() {
                 requestEditConfirm();
               }}
               className="space-y-5"
-            ></form>
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Detection Date
+                  </label>
+                  <input
+                    type="date"
+                    value={selectedItem.date}
+                    onChange={(e) =>
+                      setSelectedItem({ ...selectedItem, date: e.target.value })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Location
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedItem.location}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        location: e.target.value,
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Infestation Level
+                  </label>
+                  <select
+                    value={selectedItem.infestationLevel}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        infestationLevel: e.target.value,
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                  >
+                    <option value="Healthy">Healthy</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Under treatment">Under treatment</option>
+                    <option value="Critical">Critical</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Palm Status
+                  </label>
+                  <select
+                    value={selectedItem.status}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        status: e.target.value,
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                  >
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Critical">Critical</option>
+                  </select>
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Notes
+                  </label>
+                  <textarea
+                    value={selectedItem.notes}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        notes: e.target.value,
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    rows="3"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Owner
+                  </label>
+                  <input
+                    type="text"
+                    value={selectedItem.owner}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        owner: e.target.value,
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Hectares
+                  </label>
+                  <input
+                    type="number"
+                    value={selectedItem.hectares}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        hectares: e.target.value,
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    min="1"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Seedling Quantity
+                  </label>
+                  <input
+                    type="number"
+                    value={selectedItem.qtdMudas}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        qtdMudas: parseInt(e.target.value),
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    min="0"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Humidity (%)
+                  </label>
+                  <input
+                    type="number"
+                    value={selectedItem.umidade}
+                    onChange={(e) =>
+                      setSelectedItem({
+                        ...selectedItem,
+                        umidade: parseFloat(e.target.value),
+                      })
+                    }
+                    className="w-full p-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent focus:outline-none"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    required
+                  />
+                </div>
+              </div>
+            </form>
           )}
         </Modal>
 

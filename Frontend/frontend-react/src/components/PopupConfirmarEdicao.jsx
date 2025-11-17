@@ -21,22 +21,22 @@ export const PopupConfirmarEdicao = ({ isOpen, onClose, onConfirm }) => {
               ></path>
             </svg>
           </div>
-          <h3 className="text-xl font-bold mt-4">Confirmar Edição</h3>
+          <h3 className="text-xl font-bold mt-4">Confirm Edit</h3>
           <p className="mt-2 text-gray-600">
-            Deseja salvar as alterações neste registro?
+            Do you want to save the changes to this record?
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <button
               onClick={onClose}
               className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-full transition cursor-pointer"
             >
-              Cancelar
+              Cancel
             </button>
             <button
               onClick={onConfirm}
               className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full transition cursor-pointer"
             >
-              Salvar
+              Save
             </button>
           </div>
         </div>

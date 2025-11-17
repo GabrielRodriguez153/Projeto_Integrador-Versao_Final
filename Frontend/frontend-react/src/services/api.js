@@ -22,10 +22,10 @@ const apiNew = axios.create({
 const addInterceptors = (instance) => {
   instance.interceptors.request.use((config) => {
     const token = localStorage.getItem("authToken");
-    console.log("Token no localStorage:", token ? "Sim" : "Não"); // LOG DEBUG
+    console.log("Token no localStorage:", token ? "Sim" : "Não");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log("Header adicionado:", config.headers.Authorization); // LOG DEBUG
+      console.log("Header adicionado:", config.headers.Authorization);
     }
     return config;
   });
